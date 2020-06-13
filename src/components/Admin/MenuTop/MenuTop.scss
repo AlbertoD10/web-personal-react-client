@@ -1,0 +1,21 @@
+@import "../../../scss/index.scss";
+
+.menu-top {
+  display: flex;
+  width: 100% !important;
+
+  button {
+    color: $font-light;
+  }
+
+  &__left {
+    &-logo {
+      height: 50px !important;
+      width: 50px !important;
+    }
+  }
+  &__right {
+    position: absolute;
+    left: 90%;
+  }
+}

@@ -1,0 +1,30 @@
+.register-form {
+  h2 {
+    color: white;
+    margin-bottom: 20px;
+  }
+  button {
+    width: 100%;
+    background-color: rgb(55, 59, 66);
+    border: none;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: grey;
+      cursor: pointer;
+    }
+    &:focus {
+      background-color: rgb(30, 30, 71);
+    }
+  }
+
+  &__input {
+    background: transparentize($color: #e9e7e7, $amount: 0.1);
+    .ant-input {
+      background: transparent;
+      &::placeholder {
+        color: rgb(122, 120, 120);
+      }
+    }
+  }
+}

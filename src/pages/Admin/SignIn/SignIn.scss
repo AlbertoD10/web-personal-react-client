@@ -1,0 +1,56 @@
+@import "../../../scss//index.scss";
+
+.sign-in {
+  background-image: url("../../../assets/img/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+
+    &-tabs {
+      margin: 0 0 20px 0;
+      padding: 10px 50px 10px 50px;
+    }
+
+    &-logo {
+      margin: 20px;
+      display: inline-flex;
+      padding: 0 20px;
+
+      img {
+        height: 150px;
+      }
+    }
+
+    &-tabs {
+      background-color: transparentize(
+        $color: rgb(219, 217, 223),
+        $amount: 0.3
+      );
+
+      .ant-tabs {
+        &-nav {
+          &-list {
+            button {
+              justify-content: space-between;
+              span {
+                color: white;
+              }
+              &:hover {
+                color: rgb(73, 70, 70);
+              }
+            }
+          }
+          &-wrap {
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
