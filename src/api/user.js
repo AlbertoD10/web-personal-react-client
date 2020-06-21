@@ -18,12 +18,12 @@ export function signUpApi(data) {
     })
     .then((result) => {
       if (result.user) {
-        //Si existe un usuario, devuelvo el objeto
-        return result;
+        //Si no existe usuario en la DB, lo creo y notifico
+        return { ok: true, message: "Usuario creado correctamente" };
       }
-      return result.message;
+      return { ok: false, message: result.message };
     })
     .catch((err) => {
-      return err.message;
+      return { ok: false, message: err.message };
     });
 }

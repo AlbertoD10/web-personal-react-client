@@ -66,7 +66,23 @@ export default function RegisterForm() {
     }
   };
 
-  //Al hacer submit
+  //Para resetar los campos del formulario al crear el usuario
+  const resetForm = () => {
+    setFormValid({
+      email: false,
+      password: false,
+      repeatPassword: false,
+      privacyPolicy: false,
+    });
+    setInputs({
+      email: "",
+      password: "",
+      repeatPassword: "",
+      privacyPolicy: false,
+    });
+  };
+
+  //Al hacer submit al formulario
   const register = async (e) => {
     const { email, password, repeatPassword } = formValid;
     if (
@@ -88,9 +104,13 @@ export default function RegisterForm() {
         notification["error"]({ message: "Las contraseñas no son iguales" });
       } else {
         //Conecto con el API
-        notification["success"]({ message: "Creado correctamente" });
         const result = await signUpApi(inputs);
-        console.log(result);
+        if (!result.ok) {
+          notification["error"]({ message: result.message });
+        } else {
+          notification["success"]({ message: result.message });
+          resetForm();
+        }
       }
     }
   };
