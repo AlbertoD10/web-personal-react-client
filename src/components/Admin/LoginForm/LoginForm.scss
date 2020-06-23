@@ -1,0 +1,35 @@
+.login-form {
+  width: 33vh;
+  height: 33vh;
+
+  h2 {
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+  button {
+    color: white;
+    width: 100%;
+    background-color: rgb(55, 59, 66);
+    border: none;
+    border-radius: 8px;
+
+    &:hover {
+      background-color: grey;
+      cursor: pointer;
+    }
+    &:focus {
+      background-color: rgb(30, 30, 71);
+    }
+  }
+  &__input {
+    width: 100%;
+    background: transparentize($color: #e9e7e7, $amount: 0.1);
+    .ant-input {
+      background: transparent;
+      &::placeholder {
+        color: rgb(122, 120, 120);
+      }
+    }
+  }
+}
