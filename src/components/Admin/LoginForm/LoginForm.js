@@ -8,7 +8,7 @@ import "./LoginForm.scss";
 
 export default function LoginForm() {
   const [inputs, setInputs] = useState({ email: "", password: "" });
-  // const [rulesMessages, setRulesMessages] = useState({});
+  const [rulesMessages, setRulesMessages] = useState({}); //Con esto manejo los mensajes de feedBack en los forms
 
   const onChangeForm = (e) => {
     setInputs({
@@ -17,7 +17,6 @@ export default function LoginForm() {
     });
   };
 
-  // const queverga = { help: "QUE CHUCHA MANO" };
   const login = async () => {
     const result = await signInApi(inputs);
     const { accessToken, refreshToken } = result;
@@ -25,21 +24,19 @@ export default function LoginForm() {
     //Si hay mensaje de error
     if (result.message) {
       notification["error"]({ message: result.message });
-      // setRulesMessages({
-      //   ...rulesMessages,
-      //   help: "Que chucha manaa",
-      //   validateStatus: "error",
-      // });
+      setRulesMessages({
+        ...rulesMessages,
+        help: result.message,
+        validateStatus: "error",
+      });
     }
     //De otro modo, guardo el token en el local storage
     else {
       localStorage.setItem(ACCESS_TOKEN, accessToken);
       localStorage.setItem(REFRESH_TOKEN, refreshToken);
       notification["success"]({ message: "Todo fino" });
-      window.location.href = "/admin";
+      //  window.location.href = "/admin";
     }
-
-    console.log(result);
   };
 
   return (
@@ -53,7 +50,7 @@ export default function LoginForm() {
             message: "Debe ingresar su email",
           },
         ]}
-        //  {...rulesMessages}
+        {...rulesMessages}
       >
         <Input
           name="email"
@@ -67,6 +64,7 @@ export default function LoginForm() {
       <Form.Item
         name="password"
         rules={[{ required: true, message: "Debe ingresar la contraseña" }]}
+        {...rulesMessages}
       >
         <Input
           name="password"

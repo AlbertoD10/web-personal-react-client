@@ -5,6 +5,7 @@ import MenuTop from "../components/Admin/MenuTop";
 import LoadRoutesLayout from "../router/LoadRoutesLayout";
 import MenuSider from "../components/Admin/MenuSider";
 import AdminSignIn from "../pages/Admin/SignIn";
+import { getAccessToken, getRefreshToken } from "../api/auth";
 
 import "./LayoutAdmin.scss";
 
@@ -15,6 +16,11 @@ export default function LayoutAdmin(props) {
   const [menuCollapsed, setMenuCollapsed] = useState(false);
 
   const user = null;
+
+  const accessToken = getAccessToken();
+  const refreshToken = getRefreshToken();
+  console.log(`accessToken: ${accessToken}`);
+  console.log(`refreshToken: ${refreshToken}`);
 
   //Si no tengo usuario logeado, lo envio a la pantalla de login
   if (!user) {
