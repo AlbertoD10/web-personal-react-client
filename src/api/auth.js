@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 import { basePath, apiVersion } from "./config";
 
 //Funcion para obtener el accessToken
-export function getAccessToken() {
+export function getAccessTokenApi() {
   const accesToken = localStorage.getItem(ACCESS_TOKEN); //Obtengo el token del localStorage
 
   //Valido que si no recibo el token, entonces devuelvo null
@@ -17,13 +17,48 @@ export function getAccessToken() {
 }
 
 //Funcion para obtener el refreshToken
-export function getRefreshToken() {
+export function getRefreshTokenApi() {
   const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
   if (!refreshToken || refreshToken === null) {
     return null;
   }
   return willExpireToken(refreshToken) ? null : refreshToken;
+}
+
+export function refreshAccessTokenApi(refreshToken) {
+  const url = `${basePath}/${apiVersion}/refresh-access-token`;
+  const bodyObj = { refreshToken: refreshToken };
+  const params = {
+    method: "POST",
+    body: JSON.stringify(bodyObj),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  fetch(url, params)
+    .then((response) => {
+      if (!response.status !== 200) {
+        return null;
+      }
+      return response.json();
+    })
+    .then((result) => {
+      if (!result) {
+        logout();
+      } else {
+        const { refreshToken, accesToken } = result;
+        localStorage.setItem(ACCESS_TOKEN, accesToken);
+        localStorage.setItem(REFRESH_TOKEN, refreshToken);
+      }
+    });
+}
+
+//Funcion para desloguear
+export function logout() {
+  localStorage.removeItem(ACCESS_TOKEN);
+  localStorage.removeItem(REFRESH_TOKEN);
 }
 
 //Funcion para calcular si el token expirò

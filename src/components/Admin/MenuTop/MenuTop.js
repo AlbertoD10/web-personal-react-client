@@ -1,11 +1,14 @@
 import React from "react";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 import KevinLogo from "../../../assets/img/iconoLobo.png";
 import {
   ArrowRightOutlined,
   ArrowLeftOutlined,
   PoweroffOutlined,
+  ExclamationCircleOutlined,
+  SecurityScanTwoTone,
 } from "@ant-design/icons";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
 
 import "./MenuTop.scss";
 
@@ -32,15 +35,24 @@ export default function MenuTop(props) {
       </div>
       <div className="menu-top__right">
         {/* Boton para cerra sesion */}
-        <Button
-          type="link"
-          onClick={() => {
-            console.log("cerrar sesion");
-          }}
-        >
+        <Button type="link" onClick={logoutUser}>
           <PoweroffOutlined />
         </Button>
       </div>
     </div>
   );
+}
+
+function logoutUser() {
+  Modal.confirm({
+    title: "¿Desea cerrar su sesión?",
+    icon: <ExclamationCircleOutlined />,
+    content: "Haga click en OK para cerrar su sesión",
+    okType: "danger",
+    centered: true,
+    onOk() {
+      localStorage.removeItem(ACCESS_TOKEN);
+      localStorage.removeItem(REFRESH_TOKEN);
+    },
+  });
 }
