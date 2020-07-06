@@ -7,7 +7,7 @@ import {
 } from "../api/auth";
 import jwtDecode from "jwt-decode";
 
-export const AuthContext = createContext("Lol");
+export const AuthContext = createContext();
 
 export default function AuthProvider(props) {
   const { children } = props; //Children es toda la pagina que se va a renderizar

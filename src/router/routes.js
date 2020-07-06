@@ -12,7 +12,7 @@ import AdminSignIn from "../pages/Admin/SignIn";
 import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 import Error404 from "../pages/Error404";
-
+import AdminUsers from "../pages/Admin/Users";
 //Creo el objeto con las rutas de admin
 // Our route config is just an array of logical "routes"
 // with `path` and `component` props, ordered the same
@@ -31,6 +31,11 @@ const routes = [
       {
         path: "/admin/login",
         component: AdminSignIn,
+        exact: true,
+      },
+      {
+        path: "/admin/users",
+        component: AdminUsers,
         exact: true,
       },
       {

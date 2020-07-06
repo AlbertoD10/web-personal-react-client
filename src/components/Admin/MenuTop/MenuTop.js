@@ -7,6 +7,7 @@ import {
   PoweroffOutlined,
   ExclamationCircleOutlined,
   SecurityScanTwoTone,
+  WindowsFilled,
 } from "@ant-design/icons";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
 
@@ -53,6 +54,7 @@ function logoutUser() {
     onOk() {
       localStorage.removeItem(ACCESS_TOKEN);
       localStorage.removeItem(REFRESH_TOKEN);
+      window.location.reload();
     },
   });
 }
