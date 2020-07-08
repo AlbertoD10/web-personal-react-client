@@ -48,3 +48,33 @@ export function signInApi(data) {
       return { message: err.message };
     });
 }
+
+export async function getUsersApi(token) {
+  const url = `${basePath}/${apiVersion}/users`;
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  // return fetch(url, params)
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then((result) => {
+  //     return result;
+  //   })
+  //   .catch((err) => {
+  //     return { message: err.message };
+  //   });
+  //Esta es la manera de hacerlo usando async
+  try {
+    const response = await fetch(url, params);
+    const json = await response.json();
+    return json;
+  } catch (err) {
+    return { message: err.message };
+  }
+}

@@ -6,8 +6,6 @@ import {
   ArrowLeftOutlined,
   PoweroffOutlined,
   ExclamationCircleOutlined,
-  SecurityScanTwoTone,
-  WindowsFilled,
 } from "@ant-design/icons";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
 
