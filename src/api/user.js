@@ -48,7 +48,7 @@ export function signInApi(data) {
       return { message: err.message };
     });
 }
-
+//Obtengo todos los usuarios
 export async function getUsersApi(token) {
   const url = `${basePath}/${apiVersion}/users`;
   const params = {
@@ -59,17 +59,26 @@ export async function getUsersApi(token) {
     },
   };
 
-  // return fetch(url, params)
-  //   .then((response) => {
-  //     return response.json();
-  //   })
-  //   .then((result) => {
-  //     return result;
-  //   })
-  //   .catch((err) => {
-  //     return { message: err.message };
-  //   });
-  //Esta es la manera de hacerlo usando async
+  try {
+    const response = await fetch(url, params);
+    const json = await response.json();
+    return json;
+  } catch (err) {
+    return { message: err.message };
+  }
+}
+
+//Recibir usuarios que estan activos
+export async function getUsersActiveApi(token, status) {
+  const url = `${basePath}/${apiVersion}/users-active?active=${status}`;
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
   try {
     const response = await fetch(url, params);
     const json = await response.json();

@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { getUsersApi } from "../../../api/user";
+import { getUsersActiveApi } from "../../../api/user";
 import { getAccessTokenApi } from "../../../api/auth";
 import "./Users.scss";
 
 export default function Users() {
-  const [users, setUsers] = useState([]);
+  const [usersActive, setUsersActive] = useState([]);
+  const [usersInactive, setUsersInactive] = useState([]);
   const token = getAccessTokenApi();
 
-  //useEffect porque es asincrono, y tengo que guardar los datos a medidad
+  //useEffect porque es asincrono, y tengo que guardar los datos a medida
   //que van llegando
   useEffect(() => {
-    getUsersApi(token).then((response) => {
+    //Primero entra y se busca todos users activos
+    getUsersActiveApi(token, true).then((response) => {
       console.log(response);
-      setUsers(response);
+      setUsersActive(response);
+    });
+    //Luego, vuelve a hacer la peticicon a buscar los users inactivos.
+    getUsersActiveApi(token, false).then((response) => {
+      console.log(response);
+      setUsersInactive(response);
     });
   }, [token]);
 
