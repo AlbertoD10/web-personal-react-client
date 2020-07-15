@@ -11,7 +11,6 @@ function MenuSider(props) {
     menuCollapsed,
     location: { pathname },
   } = props;
-  console.log(pathname);
 
   return (
     <Sider className="admin-sider" collapsed={menuCollapsed}>

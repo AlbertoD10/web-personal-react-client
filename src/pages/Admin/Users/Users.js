@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getUsersActiveApi } from "../../../api/user";
 import { getAccessTokenApi } from "../../../api/auth";
+import ListUsers from "../../../components/Admin/Users/ListUsers";
 import "./Users.scss";
 
 export default function Users() {
@@ -10,18 +11,21 @@ export default function Users() {
 
   //useEffect porque es asincrono, y tengo que guardar los datos a medida
   //que van llegando
+
   useEffect(() => {
     //Primero entra y se busca todos users activos
     getUsersActiveApi(token, true).then((response) => {
-      console.log(response);
-      setUsersActive(response);
+      setUsersActive(response.users);
     });
     //Luego, vuelve a hacer la peticicon a buscar los users inactivos.
     getUsersActiveApi(token, false).then((response) => {
-      console.log(response);
-      setUsersInactive(response);
+      setUsersInactive(response.users);
     });
   }, [token]);
 
-  return <div>Lolazo</div>;
+  return (
+    <div className="users">
+      <ListUsers usersActive={usersActive} usersInactive={usersInactive} />
+    </div>
+  );
 }

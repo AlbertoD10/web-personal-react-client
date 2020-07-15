@@ -7,6 +7,7 @@ import {
 } from "../api/auth";
 import jwtDecode from "jwt-decode";
 
+//Creo el context que envuelve la aplicacion
 export const AuthContext = createContext();
 
 export default function AuthProvider(props) {
