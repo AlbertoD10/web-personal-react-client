@@ -1,0 +1,18 @@
+.edit-user-form {
+  .upload-avatar {
+    display: table;
+    margin: 0 auto;
+    border: 2px solid rgb(168, 164, 164);
+    border-style: dashed;
+    padding: 10px;
+    border-radius: 100%;
+    margin-bottom: 20px;
+    .avatarr {
+      border: 2px solid black;
+    }
+
+    &:hover {
+      border-color: rgb(103, 196, 250);
+    }
+  }
+}

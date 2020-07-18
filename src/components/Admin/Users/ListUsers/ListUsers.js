@@ -67,7 +67,7 @@ function UsersActive(props) {
   const editUser = (user) => {
     setIsVisibleModal(true);
     setModalTitle(`Editar: ${user.name} ${user.lastame}`);
-    setModalContent(<EditUserForm email={user.email} />);
+    setModalContent(<EditUserForm user={user} />);
     console.log(user);
   };
 
