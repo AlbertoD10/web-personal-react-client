@@ -11,6 +11,7 @@ export default function Modal(props) {
       closable
       title={modalTitle}
       onCancel={() => setIsVisibleModal(false)}
+      footer={false}
     >
       {children}
     </ModalAntd>

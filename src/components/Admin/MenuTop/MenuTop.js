@@ -44,7 +44,7 @@ export default function MenuTop(props) {
 
 function logoutUser() {
   Modal.confirm({
-    title: "¿Desea cerrar su sesión?",
+    title: "¿Desea cerrar sesión?",
     icon: <ExclamationCircleOutlined />,
     content: "Haga click en OK para cerrar su sesión",
     okType: "danger",

@@ -7,6 +7,7 @@ import "./Users.scss";
 export default function Users() {
   const [usersActive, setUsersActive] = useState([]);
   const [usersInactive, setUsersInactive] = useState([]);
+  const [reloadUser, setRealoadUser] = useState(false);
   const token = getAccessTokenApi();
 
   //useEffect porque es asincrono, y tengo que guardar los datos a medida
@@ -21,11 +22,16 @@ export default function Users() {
     getUsersActiveApi(token, false).then((response) => {
       setUsersInactive(response.users);
     });
-  }, [token]);
+    setRealoadUser(false); //Actualizo el usuario cada vez que la peticion se actualiza
+  }, [token, reloadUser]);
 
   return (
     <div className="users">
-      <ListUsers usersActive={usersActive} usersInactive={usersInactive} />
+      <ListUsers
+        usersActive={usersActive}
+        usersInactive={usersInactive}
+        setRealoadUser={setRealoadUser}
+      />
     </div>
   );
 }

@@ -87,3 +87,99 @@ export async function getUsersActiveApi(token, status) {
     return { message: err.message };
   }
 }
+
+//Subir la foto de perfil de los usuarios a la db
+
+export function uploadAvatarApi(token, avatar, userId) {
+  const url = `${basePath}/${apiVersion}/upload-avatar/${userId}`;
+
+  const formData = new FormData();
+  formData.append("avatar", avatar, avatar.name);
+
+  const params = {
+    method: "PUT",
+    body: formData,
+    headers: { Authorization: token },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+//Para obtener la foto de perfil del usuario
+
+export function getAvatarApi(avatarName) {
+  const url = `${basePath}/${apiVersion}/get-avatar/${avatarName}`;
+
+  return fetch(url)
+    .then((response) => {
+      if (response.status !== 200) {
+        return null;
+      } else {
+        return response.url;
+      }
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+//Para actualizar los datos del usuario
+
+export function updateUserApi(token, user, userId) {
+  const url = `${basePath}/${apiVersion}/update-user/${userId}`;
+  const params = {
+    method: "PUT",
+    body: JSON.stringify(user),
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+//Para activar y desactivar el usuario
+
+export function activateUserApi(token, status, userId) {
+  const url = `${basePath}/${apiVersion}/activate-user/${userId}`;
+  const params = {
+    method: "PUT",
+    body: JSON.stringify({
+      active: status,
+    }),
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
