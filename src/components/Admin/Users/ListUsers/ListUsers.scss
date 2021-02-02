@@ -1,11 +1,15 @@
 .list-users {
-  &__switch {
+  &-header {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    &__switch {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
 
-    > span {
-      margin-left: 20px;
+      > span {
+        margin-left: 20px;
+      }
     }
   }
 

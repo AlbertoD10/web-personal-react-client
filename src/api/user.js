@@ -183,3 +183,48 @@ export function activateUserApi(token, status, userId) {
       return err.message;
     });
 }
+
+export function deleteUserApi(token, userId) {
+  const url = `${basePath}/${apiVersion}/delete-user/${userId}`;
+  const params = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+export function createNewUserApi(token, newUser) {
+  const url = `${basePath}/${apiVersion}/sign-up-admin/`;
+  const params = {
+    method: "POST",
+    body: JSON.stringify(newUser),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

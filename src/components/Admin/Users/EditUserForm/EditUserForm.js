@@ -59,13 +59,6 @@ export default function EditUserForm(props) {
     }
   }, [avatar]);
 
-  //Para actualizar los datos del usuario una vez editados
-  // useEffect(() => {
-  //   if (avatar) {
-  //     setUserData({ ...userData, avatar: avatar.file });
-  //   }
-  // }, [avatar]);
-
   const updateUser = () => {
     const token = getAccessTokenApi();
     let userUpdate = userData;
@@ -171,7 +164,7 @@ function UploadAvatar(props) {
 }
 
 //Componente para editar la informacion del usuario
-function EditForm(props) {
+export function EditForm(props) {
   const { updateUser, userData, setUserData } = props;
 
   return (
