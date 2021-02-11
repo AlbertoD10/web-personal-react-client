@@ -18,11 +18,11 @@ function MenuSider(props) {
         <Menu.Item key="/admin" icon={<HomeOutlined />}>
           <Link to="/admin">Home</Link>
         </Menu.Item>
-        <Menu.Item key="/admin/menu-web" icon={<MenuOutlined />}>
-          <Link to="/admin/menu-web">Menu Web</Link>
-        </Menu.Item>
         <Menu.Item key="/admin/users" icon={<UserOutlined />}>
           <Link to="/admin/users">Usuarios</Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/menu-web" icon={<MenuOutlined />}>
+          <Link to="/admin/menu-web">Menu Web</Link>
         </Menu.Item>
       </Menu>
     </Sider>

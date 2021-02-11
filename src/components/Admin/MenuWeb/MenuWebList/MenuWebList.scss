@@ -1,0 +1,46 @@
+.menu-web-list {
+  &_header {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &_items {
+    margin: 20px 0;
+    background-color: white;
+    padding: 10px 20px;
+
+    .List {
+      touch-action: none;
+      overflow: hidden;
+      position: relative;
+      .draggable {
+        width: 100%;
+        background-color: white;
+        margin: 10px 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .dragged {
+        opacity: 0.7;
+        &:hover {
+          cursor: grabbing;
+        }
+      }
+
+      .placeholder {
+        opacity: 0.5;
+        background-color: rgb(50, 182, 205);
+      }
+      .ant-list-item-meta {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.ant-list-item {
+  border-bottom: 1px solid #f0f0f0;
+}

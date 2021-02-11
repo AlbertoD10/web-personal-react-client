@@ -13,6 +13,7 @@ import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 import Error404 from "../pages/Error404";
 import AdminUsers from "../pages/Admin/Users";
+import MenuWeb from "../pages/Admin/MenuWeb";
 //Creo el objeto con las rutas de admin
 // Our route config is just an array of logical "routes"
 // with `path` and `component` props, ordered the same
@@ -38,6 +39,7 @@ const routes = [
         component: AdminUsers,
         exact: true,
       },
+      { path: "/admin/menu-web", component: MenuWeb, exact: true },
       {
         component: Error404,
       },
