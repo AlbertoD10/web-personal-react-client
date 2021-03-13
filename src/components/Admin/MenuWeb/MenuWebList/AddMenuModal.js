@@ -21,7 +21,6 @@ export default function AddMenuModal(props) {
 
   const onSubmit = () => {
     let menu = menuData;
-    menu.url = basePath + menuData.url;
     const token = getAccessTokenApi();
 
     addMenuApi(token, menu).then((result) => {
@@ -31,7 +30,6 @@ export default function AddMenuModal(props) {
         setShowModal(false);
       } else {
         notification["error"]({ message: result.message });
-        menu.url = "";
       }
       setRealoadMenu(true);
     });

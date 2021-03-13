@@ -46,7 +46,6 @@ export default function EditUserForm(props) {
           setAvatar(null);
         } else {
           setAvatar(response);
-          console.log(response);
         }
       });
     }

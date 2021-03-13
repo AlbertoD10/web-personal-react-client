@@ -1,0 +1,37 @@
+@import "../../../scss//index.scss";
+
+.main-banner {
+  position: relative;
+  height: 500px;
+  background-image: url("../../../assets//img/home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  &_dark {
+    position: absolute;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    opacity: 0.6;
+  }
+
+  .ant-row {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    h2 {
+      color: white;
+      font-size: 60px;
+      font-weight: bold;
+      line-height: 0;
+    }
+    h3 {
+      color: white;
+      font-size: 40px;
+    }
+  }
+}

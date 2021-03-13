@@ -19,12 +19,10 @@ export default function EditMenuModal(props) {
   };
 
   const onSubmit = () => {
-    let menu = formData;
     const token = getAccessTokenApi();
     if (!formData.title && !formData.url) {
       notification["error"]({ message: "Los campos están vacios" });
     } else {
-      menu.url = basePath + formData.url;
       updateMenuApi(token, editModalContent, formData).then((result) => {
         if (result.status) {
           notification["success"]({ message: result.message });
@@ -33,7 +31,6 @@ export default function EditMenuModal(props) {
           setShowEditModal(false);
         } else {
           notification["error"]({ message: result.message });
-          menu.url = "";
         }
       });
     }
