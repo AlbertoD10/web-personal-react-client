@@ -26,6 +26,9 @@ export default function MenuTop() {
 
   return (
     <Menu className="menu-top-web" mode="horizontal">
+      <Menu.Item className="menu-top_item">
+        <Link to={"/"}>Home</Link>
+      </Menu.Item>
       {menuData.map((item) => {
         return (
           <Menu.Item key={item._id} className="menu-top_item">
@@ -33,10 +36,6 @@ export default function MenuTop() {
           </Menu.Item>
         );
       })}
-
-      <Menu.Item className="menu-top_item">
-        <Link to={"/"}>Home</Link>
-      </Menu.Item>
     </Menu>
   );
 }
