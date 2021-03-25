@@ -11,12 +11,16 @@ export default function MenuTop() {
   useEffect(() => {
     getMenuApi().then((response) => {
       let array = [];
-      response.menu.forEach((element) => {
-        if (element.active) {
-          array.push(element);
-        }
-      });
-      setMenuData(array);
+      if (response.status === 200) {
+        response.menu.forEach((element) => {
+          if (element.active) {
+            array.push(element);
+          }
+        });
+        setMenuData(array);
+      } else {
+        setMenuData([]);
+      }
     });
   }, []);
 
@@ -28,16 +32,11 @@ export default function MenuTop() {
             <Link to={item.url}>{item.title}</Link>
           </Menu.Item>
         );
-        // return <Menu.item>HOLI</Menu.item>;
       })}
-      {/*         
+
       <Menu.Item className="menu-top_item">
         <Link to={"/"}>Home</Link>
       </Menu.Item>
-
-      <Menu.Item className="menu-top-web_item">
-        <Link to={"/contact"}>Contacto</Link>
-      </Menu.Item> */}
     </Menu>
   );
 }
