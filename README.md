@@ -1,6 +1,11 @@
 # Web Personal MERN Full Stack: MongoDB, Express, React y Node
 
-Web creada utilizando MongoDB, Node JS, Express JS y React JS, esto siguiendo un [curso en Udemy](https://courses.agustinnavarrogaldon.com/mern-stack)
+Web creada utilizando MongoDB, Node JS, Express JS y React JS, esto siguiendo un [curso en Udemy](https://courses.agustinnavarrogaldon.com/mern-stack).
+Para acceder al panel de administrador puede usar la siguiente clave y corre:
+
+email: prueba@hola.com
+password: 123456
+
 
 # Preview
 
