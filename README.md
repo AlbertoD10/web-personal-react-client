@@ -1,6 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Web Personal MERN Full Stack: MongoDB, Express, React y Node
+
+Web creada utilizando MongoDB, Node JS, Express JS y React JS, esto siguiendo un [curso en Udemy](https://courses.agustinnavarrogaldon.com/mern-stack)
+
+# Preview
+
+<p align="center">
+  <img src="https://i.imgur.com/tEeODMQl.png">
+  <img src="https://i.imgur.com/m65ScROl.png">
+  <img src="https://i.imgur.com/1H51Mzel.png">
+  <img src="https://i.imgur.com/KYkFQCQl.png">
+  <img src="https://i.imgur.com/LoBOMdIl.png">
+  <img src="https://i.imgur.com/Rf2Dp9yl.png">
+  <img src="https://i.imgur.com/atZhX3ul.png">
+
+  
+</p>
+
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
